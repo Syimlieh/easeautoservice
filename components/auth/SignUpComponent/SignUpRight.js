@@ -1,57 +1,165 @@
+import { useFormik } from "formik";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useCallback } from "react";
-
+import React, { useCallback, useState } from "react";
+import { registerValidate } from "utils/validation";
+// import { signupApi } from "./signupApi";
+import axios from "axios";
 const SignUpRight = () => {
+  const [resError, setResError] = useState();
   const router = useRouter();
-
-  const onRegisterButtonClick = useCallback(() => {
-    router.push("/Login");
-  }, [router]);
+  function register(firstName, lastName, email, phoneNumber, password) {
+    axios
+      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+      })
+      .then((response) => {
+        router.push("/auth/signin");
+      })
+      .catch((error) => {
+        setResError(error.response.data.message);
+        console.log("register error: " + error.response.data.message);
+        console.log(error);
+      });
+  }
+  //validation
+  async function onSubmit({
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    password,
+  }) {
+    console.log("before");
+    register(firstName, lastName, email, phoneNumber, password);
+    // signupApi(firstName, lastName, email, password, router);
+  }
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validate: registerValidate,
+    onSubmit,
+  });
 
   return (
     <div className="w-[40%]">
       <h2 className="text-[4.8rem] font-semibold font-inherit text-brown">
         Sign Up
       </h2>
-      <form className="h-auto mt-24">
+      <form className="relative h-auto mt-24" onSubmit={formik.handleSubmit}>
+        {resError && (
+          <p className="text-brown text-xs text-center mb-4 absolute -top-12 left-1/2 transform -translate-x-1/2">
+            {resError}
+          </p>
+        )}
         <div className=" relative mb-8">
           <input
-            className=" [border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
-            type="email"
-            placeholder="Enter Email"
-            required
+            type="firstName"
+            className={` border-2 border-solid ${
+              formik.errors.firstName && formik.touched.firstName
+                ? "border-brown"
+                : ""
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            name="firstName"
+            placeholder="Enter firstName"
             autoFocus
+            {...formik.getFieldProps("firstName")}
           />
+          {formik.errors.firstName && formik.touched.firstName ? (
+            <span className="text-brown text-xss">
+              {formik.errors.firstName}
+            </span>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className=" relative mb-8">
+          <input
+            type="lastName"
+            className={` border-2 border-solid ${
+              formik.errors.lastName && formik.touched.lastName
+                ? "border-brown"
+                : ""
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            placeholder="Enter lastName"
+            {...formik.getFieldProps("lastName")}
+          />
+          {formik.errors.lastName && formik.touched.lastName ? (
+            <span className="text-brown text-xss">
+              {formik.errors.lastName}
+            </span>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div className=" relative mb-8">
+          <input
+            type="email"
+            className={` border-2 border-solid ${
+              formik.errors.email && formik.touched.email ? "border-brown" : ""
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            placeholder="Enter Email"
+            {...formik.getFieldProps("email")}
+          />
+          {formik.errors.email && formik.touched.email ? (
+            <span className="text-brown text-xss">{formik.errors.email}</span>
+          ) : (
+            <></>
+          )}
         </div>
         <div className=" w-full relative mb-8">
           <input
-            className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+            className={` border-2 border-solid ${
+              formik.errors.phoneNumber && formik.touched.phoneNumber
+                ? "border-brown"
+                : ""
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
             type="tel"
             placeholder="Phone Number"
-            required
+            {...formik.getFieldProps("phoneNumber")}
           />
+          {formik.errors.phoneNumber && formik.touched.phoneNumber ? (
+            <span className="text-brown text-xss">
+              {formik.errors.phoneNumber}
+            </span>
+          ) : (
+            <></>
+          )}
         </div>
+
         <div className=" w-full relative mb-8">
           <input
-            className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
-            type="text"
-            placeholder="Name"
-            required
-          />
-        </div>
-        <div className=" w-full relative mb-8">
-          <input
-            className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+            className={` border-2 border-solid ${
+              formik.errors.password && formik.touched.password
+                ? "border-brown"
+                : ""
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
             type="password"
             placeholder="Password"
             minLength={8}
-            required
+            {...formik.getFieldProps("password")}
           />
+          {formik.errors.password && formik.touched.password ? (
+            <span className="text-brown text-xss">
+              {formik.errors.password}
+            </span>
+          ) : (
+            <></>
+          )}
         </div>
         <button
           className="mt-8 cursor-pointer [border:none] py-[10px] rounded-[8px] w-full text-xs bg-indigo-200  text-white font-outfit text-center flex box-border items-center justify-center"
-          onClick={onRegisterButtonClick}
+          type="submit"
         >
           Register
         </button>

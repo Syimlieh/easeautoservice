@@ -1,11 +1,11 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { useCallback } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
-const SignUpLeft = () => {
+const SignInLeft = () => {
   const router = useRouter();
   const onYouCanSingInClick = useCallback(() => {
-    router.push("/auth/signin");
+    router.push("/auth/signup");
   }, [router]);
 
   return (
@@ -16,14 +16,14 @@ const SignUpLeft = () => {
       </h2>
       <div className="mt-8 ">
         <p className="font-outfit text-2xs leading-10">
-          If you already have an account
+          If you don’t have an account
         </p>
         <p
           className="font-outfit text-2xs cursor-pointer leading-10"
           onClick={onYouCanSingInClick}
         >
           <span>You can</span>
-          <span className="text-indigo-200"> SingIn Here !</span>
+          <span className="text-indigo-200"> Register Here !</span>
         </p>
       </div>
       <div className="mt-8 text-center">
@@ -40,4 +40,4 @@ const SignUpLeft = () => {
   );
 };
 
-export default SignUpLeft;
+export default SignInLeft;

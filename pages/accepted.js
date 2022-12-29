@@ -1,10 +1,12 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout";
+import { useSession, signIn, signOut } from "next-auth/react";
+// import { checkAuthenticate } from "utils/protectedRoutes";
 
-const Accepted = () => {
+export default function Accepted() {
   const router = useRouter();
-
+  const { data: session } = useSession();
   const onOfferAceptedButtonClick = useCallback(() => {
     router.push("/");
   }, [router]);
@@ -44,6 +46,12 @@ const Accepted = () => {
       </div>
     </Layout>
   );
-};
+}
 
-export default Accepted;
+// export async function getServerSideProps(context) {
+//   return checkAuthenticate(context, (session) => {
+//     return {
+//       props: {}, // will be passed to the page component as props
+//     };
+//   });
+// }

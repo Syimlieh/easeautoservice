@@ -4,7 +4,7 @@ export const data = [
     name: "Flemingstar Syiemlieh",
     message:
       "As a full stack developer, I have a strong foundation in both front-end and back-end technologies. I am skilled in building and maintaining web applications and have a passion for solving complex problems. I thrive in collaborative environments and am always looking for ways to improve my skills and contribute to a team's success.",
-    profile: "/teams/fleming.jpg",
+    profile: "/teams/fleming.webp",
     role: "Full Stack Developer",
   },
   {
@@ -20,15 +20,15 @@ export const data = [
     name: "Rahul Kumar Chaudhary",
     message:
       "As a UX designer, I am passionate about creating seamless and intuitive user experiences. I am skilled in conducting user research and usability testing, and have experience creating wireframes, prototypes, and high-fidelity mockups. I enjoy collaborating with cross-functional teams and using my skills to solve real-world problems and improve the user experience.",
-    profile: "/teams/fleming.jpg",
+    profile: "/teams/fleming.webp",
     role: "UX Designer",
   },
   {
     id: "4",
-    name: "Amrit Paul",
+    name: "Amrit Pal Kaur",
     message:
       "As a UI designer, I have a strong eye for aesthetics and a passion for creating visually appealing and intuitive user interfaces. I am skilled in using design software such as Adobe Creative Suite and have experience designing for web and mobile platforms. I am a detail-oriented and creative thinker who enjoys working with teams to create beautiful and functional designs.",
-    profile: "/teams/rashid.png",
+    profile: "/teams/amritpalkaur.webp",
     role: "UI Designer",
   },
 ];

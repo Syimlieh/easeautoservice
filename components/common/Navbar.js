@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 const Navbar = () => {
   const router = useRouter();
-
+  const { data: session } = useSession();
   const onAboutClick = useCallback(() => {
     router.push("/about_us");
   }, [router]);
@@ -16,8 +16,8 @@ const Navbar = () => {
     router.push("/");
   }, [router]);
 
-  const onSignUpButton = useCallback(() => {
-    router.push("/auth/signup");
+  const onSigninButton = useCallback(() => {
+    router.push("/auth/signin");
   }, [router]);
 
   return (
@@ -47,12 +47,21 @@ const Navbar = () => {
         </p>
       </div>
       <div className="cursor-pointer [border:none] p-[0] bg-[transparent]  w-[134.8px] h-[47px]">
-        <button
-          className="cursor-pointer [border:none] bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
-          onClick={onSignUpButton}
-        >
-          Signup
-        </button>
+        {session ? (
+          <button
+            className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+            onClick={() => signOut()}
+          >
+            Log Out
+          </button>
+        ) : (
+          <button
+            className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+            onClick={onSigninButton}
+          >
+            Sign In
+          </button>
+        )}
       </div>
     </nav>
   );

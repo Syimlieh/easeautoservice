@@ -1,10 +1,11 @@
 import React from "react";
 import Head from "next/head";
 import "styles/globals.css";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <React.Fragment>
+    <SessionProvider session={session}>
       <Head>
         <title>EaseAutoService</title>
         <meta
@@ -34,7 +35,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Component {...pageProps} />
-    </React.Fragment>
+    </SessionProvider>
   );
 }
 

@@ -1,15 +1,19 @@
 import React, { useCallback } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 import SignUpLeft from "./SignUpLeft";
 import SignUpRight from "./SignUpRight";
+import Footer from "components/common/Footer";
 
 const SignUpComponent = () => {
+  const router = useRouter();
+  const onClickLogo = useCallback(() => {
+    router.push("/");
+  }, [router]);
   return (
     <div className="container py-6">
       <img
-        className=" w-[213.91px] h-[55px] object-contain"
+        onClick={onClickLogo}
+        className=" w-[213.91px] h-[55px] cursor-pointer object-contain"
         alt="EaseAutoService Logo"
         src="/logo/easeautoservice_logo.png"
       />
@@ -19,6 +23,7 @@ const SignUpComponent = () => {
           <SignUpRight />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

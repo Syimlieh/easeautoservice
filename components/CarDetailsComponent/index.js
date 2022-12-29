@@ -1,5 +1,8 @@
+import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
+import { carDetailValidation } from "utils/validation";
+import { carDetailApi } from "./carDetailApi";
 
 const CarDetailsComponent = () => {
   const router = useRouter();
@@ -7,6 +10,31 @@ const CarDetailsComponent = () => {
   const onCarDetailNextButtonClick = useCallback(() => {
     router.push("/car_owner");
   }, [router]);
+
+  //formik
+
+  //validation
+  async function onSubmit({
+    registerYear,
+    carBrand,
+    carModel,
+    carVariant,
+    kilometerDriven,
+  }) {
+    // carDetailApi(registerYear, carBrand, carModel, carVariant, kilometerDriven);
+    console.log(registerYear, carBrand, carModel, carVariant, kilometerDriven);
+  }
+  const formik = useFormik({
+    initialValues: {
+      registerYear: "",
+      carBrand: "",
+      carModel: "",
+      carVariant: "",
+      kilometerDriven: "",
+    },
+    validate: carDetailValidation,
+    onSubmit,
+  });
   return (
     <>
       <div className="flex flex-col">
@@ -15,7 +43,7 @@ const CarDetailsComponent = () => {
           <span className="text-brown ">Car Details</span>
         </h2>
       </div>
-      <form className="w-full h-auto mt-24">
+      <form className="w-full h-auto mt-24" onSubmit={formik.handleSubmit}>
         <div className="flex flex-wrap w-full h-auto">
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
@@ -29,13 +57,24 @@ const CarDetailsComponent = () => {
             </label>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.registerYear && formik.touched.registerYear
+                    ? "border-brown"
+                    : ""
+                }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="text"
                 id="registrationYear"
                 placeholder="2022"
-                required
                 autoFocus
+                {...formik.getFieldProps("registerYear")}
               />
+              {formik.errors.registerYear && formik.touched.registerYear ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.registerYear}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
@@ -47,12 +86,23 @@ const CarDetailsComponent = () => {
             </label>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.carBrand && formik.touched.carBrand
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="text"
                 id="carbrand"
                 placeholder="Mercedes"
-                required
+                {...formik.getFieldProps("carBrand")}
               />
+              {formik.errors.carBrand && formik.touched.carBrand ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.carBrand}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
@@ -64,12 +114,23 @@ const CarDetailsComponent = () => {
             </label>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.carModel && formik.touched.carModel
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="text"
                 id="carModel"
                 placeholder="Benz C-Class"
-                required
+                {...formik.getFieldProps("carModel")}
               />
+              {formik.errors.carModel && formik.touched.carModel ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.carModel}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
@@ -81,12 +142,23 @@ const CarDetailsComponent = () => {
             </label>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.carVariant && formik.touched.carVariant
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="text"
                 placeholder="C-220d"
-                required
                 id="carVariant"
+                {...formik.getFieldProps("carVariant")}
               />
+              {formik.errors.carVariant && formik.touched.carVariant ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.carVariant}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 
@@ -99,13 +171,25 @@ const CarDetailsComponent = () => {
             </label>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.kilometerDriven &&
+                  formik.touched.kilometerDriven
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="text"
                 placeholder="5000"
-                required
-                autoFocus
                 id="kilometerDriven"
+                {...formik.getFieldProps("kilometerDriven")}
               />
+              {formik.errors.kilometerDriven &&
+              formik.touched.kilometerDriven ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.kilometerDriven}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
