@@ -5,7 +5,7 @@ const Navbar = () => {
   const router = useRouter();
 
   const onAboutClick = useCallback(() => {
-    router.push("/AboutPage");
+    router.push("/about_us");
   }, [router]);
 
   const onContactClick = useCallback(() => {
@@ -24,26 +24,26 @@ const Navbar = () => {
     <nav className=" flex justify-between items-center w-full h-auto py-6">
       <div className="cursor-pointer" onClick={onClickLogo}>
         <img
-          className=" w-[213.91px] h-[55px] object-cover"
-          alt="EaseAuto Logo"
-          src="/syiemchat-1@2x.png"
+          className=" w-[213.91px] h-[55px] object-contain"
+          alt="EaseAutoService Logo"
+          src="/logo/easeautoservice_logo.png"
         />
       </div>
       <div className="  w-[448.21px] h-[55px] flex flex-row p-[0px_20px] box-border items-center justify-center gap-[70px]">
-        <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
-          Services
-        </p>
         <p
           className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
           onClick={onAboutClick}
         >
-          About
+          About Us
         </p>
         <p
           className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
           onClick={onContactClick}
         >
           Contact
+        </p>
+        <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
+          Services
         </p>
       </div>
       <div className="cursor-pointer [border:none] p-[0] bg-[transparent]  w-[134.8px] h-[47px]">

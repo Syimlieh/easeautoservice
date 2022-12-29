@@ -16,7 +16,7 @@ const Accepted = () => {
           <h2 className="relative text-brown font-semibold font-inherit inline-block ">
             Congratulation
           </h2>
-          <div className="w-full h-auto text-xs mt-24">
+          <div className="w-full h-auto text-xs mt-24 mb-8">
             <p className="mb-8">
               Congratulations on accepting our offer for your used car! We are
               excited to move forward with the sale and make the process as

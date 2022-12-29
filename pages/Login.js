@@ -81,10 +81,9 @@ const Login = () => {
         </div>
       </div>
       <img
-        className="absolute top-[0px] left-[188px] w-[188px] h-[46px] object-cover"
+        className=" w-[213.91px] h-[55px] object-cover"
         alt="EaseAuto Logo"
-        loading="lazy"
-        src="../syiemchat-15@2x.png"
+        src="/logo/easeautoservice_logo"
       />
     </div>
   );

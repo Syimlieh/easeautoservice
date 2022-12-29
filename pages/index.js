@@ -1,7 +1,6 @@
 import Layout from "components/Layout";
 import HeroSection from "components/HeroSection";
 import HowItWorks from "components/HowItWorks";
-// import Testimonial from "components/Testimonial";
 import TeamsSection from "components/TeamsSection";
 import Testimonials from "components/Testimonials";
 

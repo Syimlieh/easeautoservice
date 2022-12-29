@@ -17,7 +17,7 @@ const FInalOffer = () => {
             <span>Final</span>
             <span className="text-brown"> Offer</span>
           </h2>
-          <div className="w-full h-auto text-xs mt-24">
+          <div className="w-full h-auto text-xs mt-24 mb-8">
             <p className="mb-8">
               Thank you for submitting your car's information to our service.
               After reviewing all the details, we are pleased to offer you

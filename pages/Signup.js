@@ -94,7 +94,7 @@ const Signup = () => {
         />
       </div>
       <Link href="/HomePage">
-        <a className="cursor-pointer [text-decoration:none] absolute top-[0px] left-[188px] w-[189px] h-[56px] bg-[url(../public/syiemchat1@3x.png)] bg-cover bg-no-repeat bg-[top]" />
+        <a className="cursor-pointer [text-decoration:none] absolute top-[0px] left-[188px] w-[189px] h-[56px]" />
       </Link>
     </div>
   );

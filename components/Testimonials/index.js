@@ -68,6 +68,7 @@ const Testimonials = () => {
           {data &&
             data.map((item) => (
               <TestimonialsCard
+                key={item.id}
                 name={item.name}
                 profile={item.profile}
                 message={item.message}
@@ -75,18 +76,6 @@ const Testimonials = () => {
             ))}
         </Slider>
       </div>
-      <style jsx>
-        {`
-          .testimonialFeedback:before {
-            content: url("/openQuotes.png");
-          }
-
-          .testimonialFeedback:after {
-            content: url("/closingQuote.png");
-            position: absolute;
-          }
-        `}
-      </style>
     </section>
   );
 };
