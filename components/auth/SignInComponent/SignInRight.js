@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { signIn, useSession } from "next-auth/react";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import login_validate from "utils/validation";
 
 const SignInRight = () => {
@@ -18,6 +18,8 @@ const SignInRight = () => {
 
     if (status.ok) router.push(status.url);
   }
+
+  //formik form
   const formik = useFormik({
     initialValues: {
       email: "",

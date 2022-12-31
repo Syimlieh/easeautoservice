@@ -1,6 +1,38 @@
-import React from "react";
+import Loader from "components/Loader/Loader";
+import { useFormik } from "formik";
+import React, { useState } from "react";
+import { contactUsValidation } from "utils/validation";
+import { contactUsApi } from "./contactUsApi";
 
 const ContactUsComponent = () => {
+  const [loading, setLoading] = useState();
+
+  //onsubmit function
+  async function onSubmit({ name, email, subject, phoneNumber, message }) {
+    setLoading(true);
+    const response = await contactUsApi({
+      email,
+      name,
+      subject,
+      phoneNumber,
+      message,
+    });
+    setLoading(false);
+  }
+
+  //formik form
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      subject: "",
+      phoneNumber: "",
+      message: "",
+    },
+    validate: contactUsValidation,
+    onSubmit,
+  });
+
   return (
     <div>
       <div className="flex flex-col">
@@ -12,102 +44,165 @@ const ContactUsComponent = () => {
           Our Team are always avaible to chat
         </h5>
       </div>
-      <form className="w-full h-auto mt-24">
+      <form className="w-full h-auto mt-24" onSubmit={formik.handleSubmit}>
         <div className="flex flex-wrap w-full h-auto">
           <div className=" flex flex-col w-1/2 h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
-              htmlFor="firstName"
-            >
-              First Name
-            </label>
+            <div className="flex items-center gap-3">
+              <label
+                className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
+                htmlFor="name"
+              >
+                Name
+              </label>
+              <p className="text-brown text-xss">*</p>
+            </div>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
-                id="firstName"
+                className={` border-2 border-solid ${
+                  formik.errors.name && formik.touched.name
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                id="name"
                 type="text"
-                placeholder="First Name"
+                placeholder="Name"
                 required
                 autoFocus
+                {...formik.getFieldProps("name")}
               />
-              <img
-                className="absolute top-8 right-4 w-[26.61px] h-[11.32px]"
-                alt="EaseAuto dropdown icon"
-                src="../vector-3.svg"
-              />
+              {formik.errors.name && formik.touched.name ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.name}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
-              htmlFor="lastName"
-            >
-              Last Name
-            </label>
+            <div className="flex items-center gap-3">
+              <label
+                className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
+                htmlFor="subject"
+              >
+                Subject
+              </label>
+              <p className="text-brown text-xss">*</p>
+            </div>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
-                id="lastName"
+                className={` border-2 border-solid ${
+                  formik.errors.subject && formik.touched.subject
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                id="subject"
                 type="text"
-                placeholder="Last Name"
-                required
+                placeholder="Subject"
+                {...formik.getFieldProps("subject")}
               />
+              {formik.errors.subject && formik.touched.subject ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.subject}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
-              htmlFor="email"
-            >
-              Email
-            </label>
+            <div className="flex items-center gap-3">
+              <label
+                className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <p className="text-brown text-xss">*</p>
+            </div>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.email && formik.touched.email
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 type="email"
                 id="email"
                 placeholder="Email"
-                required
+                {...formik.getFieldProps("email")}
               />
+              {formik.errors.email && formik.touched.email ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.email}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
-              htmlFor="phoneNumber"
-            >
-              Phone Number
-            </label>
+            <div className="flex items-center gap-3">
+              <label
+                className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
+                htmlFor="message"
+              >
+                Phone Number
+              </label>
+            </div>
             <div className="w-full relative">
               <input
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
-                type="tel"
-                id="phoneNumber"
+                className={`border-2 border-solid outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 placeholder="Phone Number"
-                required
+                id="phoneNumber"
+                {...formik.getFieldProps("phoneNumber")}
               />
             </div>
           </div>
           <div className="flex flex-col w-full h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
-              htmlFor="message"
-            >
-              Message
-            </label>
+            <div className="flex items-center gap-3">
+              <label
+                className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block "
+                htmlFor="message"
+              >
+                Message
+              </label>
+              <p className="text-brown text-xss">*</p>
+            </div>
             <div className="w-full relative">
               <textarea
-                className="[border:none] outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left"
+                className={` border-2 border-solid ${
+                  formik.errors.message && formik.touched.message
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 placeholder="Leave Us a Message"
                 id="message"
                 rows={5}
-                required
+                {...formik.getFieldProps("message")}
               />
+              {formik.errors.message && formik.touched.message ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.message}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
-        <button className="cursor-pointer [border:none] p-[10px_35px] text-xs bg-indigo-200 text-white font-outfit text-center rounded-[20px] flex flex-row box-border items-center justify-center">
-          Send Message
+
+        <button
+          className="relative cursor-pointer p-0 flex items-center justify-center h-20 w-[21rem] text-xs bg-indigo-200 text-white font-outfit border-none rounded-xl -pl-12"
+          type="submit"
+        >
+          {loading ? (
+            <span className="-ml-16">
+              <Loader />
+            </span>
+          ) : (
+            "Send Message"
+          )}
         </button>
       </form>
     </div>

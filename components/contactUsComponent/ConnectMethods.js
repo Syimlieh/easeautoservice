@@ -25,7 +25,7 @@ const ConnectMethods = () => {
           <p className="mt-12 text-sm">Our Team is here to help</p>
           <div className="mt-4">
             <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
-              easeauto@gmail.com
+              easeautoservice@gmail.com
             </p>
           </div>
         </div>

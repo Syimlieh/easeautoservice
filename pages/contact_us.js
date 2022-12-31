@@ -1,4 +1,4 @@
-import ConnectMethods from "components/ConnectMethods";
+import ConnectMethods from "components/contactUsComponent/ConnectMethods";
 import ContactUsComponent from "components/contactUsComponent";
 import Layout from "components/Layout";
 import React from "react";

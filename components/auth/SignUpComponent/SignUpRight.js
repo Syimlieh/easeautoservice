@@ -5,28 +5,14 @@ import React, { useCallback, useState } from "react";
 import { registerValidate } from "utils/validation";
 // import { signupApi } from "./signupApi";
 import axios from "axios";
+import { registerApi } from "./signupApi";
+import Loader from "components/Loader/Loader";
 const SignUpRight = () => {
+  const [loading, setLoading] = useState();
   const [resError, setResError] = useState();
   const router = useRouter();
-  function register(firstName, lastName, email, phoneNumber, password) {
-    axios
-      .post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signup`, {
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        password,
-      })
-      .then((response) => {
-        router.push("/auth/signin");
-      })
-      .catch((error) => {
-        setResError(error.response.data.message);
-        console.log("register error: " + error.response.data.message);
-        console.log(error);
-      });
-  }
-  //validation
+
+  //onsubmit function
   async function onSubmit({
     firstName,
     lastName,
@@ -34,10 +20,20 @@ const SignUpRight = () => {
     phoneNumber,
     password,
   }) {
-    console.log("before");
-    register(firstName, lastName, email, phoneNumber, password);
-    // signupApi(firstName, lastName, email, password, router);
+    setLoading(true);
+    const response = await registerApi(
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      password,
+      router
+    );
+    console.log(response);
+    setLoading(false);
   }
+
+  //formk form
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -158,10 +154,16 @@ const SignUpRight = () => {
           )}
         </div>
         <button
-          className="mt-8 cursor-pointer [border:none] py-[10px] rounded-[8px] w-full text-xs bg-indigo-200  text-white font-outfit text-center flex box-border items-center justify-center"
+          className="mt-8 cursor-pointer h-20 [border:none] rounded-[8px] w-full text-xs bg-indigo-200  text-white font-outfit text-center flex box-border items-center justify-center"
           type="submit"
         >
-          Register
+          {loading ? (
+            <span className="-ml-16">
+              <Loader />
+            </span>
+          ) : (
+            "REGISTER"
+          )}
         </button>
       </form>
       {/*  */}

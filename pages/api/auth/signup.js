@@ -8,7 +8,14 @@ const handler = nc(onError);
 
 handler.post(async (req, res) => {
   try {
-    await dbConnect();
+    await dbConnect()
+      .then(() => {
+        console.log("asfdasdf");
+      })
+      .catch((error) => {
+        console.log("errorsss" + error);
+        console.log("errorsss" + error.message);
+      });
     const { firstName, lastName, email, phoneNumber, password } = req.body;
     let user = await Users.findOne({ email: email });
     if (user) {

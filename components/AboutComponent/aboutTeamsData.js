@@ -20,7 +20,7 @@ export const data = [
     name: "Rahul Kumar Chaudhary",
     message:
       "As a UX designer, I am passionate about creating seamless and intuitive user experiences. I am skilled in conducting user research and usability testing, and have experience creating wireframes, prototypes, and high-fidelity mockups. I enjoy collaborating with cross-functional teams and using my skills to solve real-world problems and improve the user experience.",
-    profile: "/teams/fleming.webp",
+    profile: "/teams/rahul.webp",
     role: "UX Designer",
   },
   {
