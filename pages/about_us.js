@@ -1,4 +1,3 @@
-import MeetOurTeams from "../components/Teams/MeetOurTeams";
 import Navbar from "../components/common/Navbar";
 import AboutComponent from "components/AboutComponent";
 import Layout from "components/Layout";

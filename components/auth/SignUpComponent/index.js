@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import SignUpLeft from "./SignUpLeft";
 import SignUpRight from "./SignUpRight";
 import Footer from "components/common/Footer";
+import Image from "next/image";
 
 const SignUpComponent = () => {
   const router = useRouter();
@@ -11,11 +12,15 @@ const SignUpComponent = () => {
   }, [router]);
   return (
     <div className="container py-6">
-      <img
+      <Image
         onClick={onClickLogo}
-        className=" w-[213.91px] h-[55px] cursor-pointer object-contain"
+        className="w-[213.91px] h-[55px] cursor-pointer"
         alt="EaseAutoService Logo"
-        src="/logo/easeautoservice_logo.png"
+        src="/logo/easeautoservice_logo.webp"
+        width={220}
+        height={50}
+        objectFit="contain"
+        unoptimized
       />
       <div className=" relative bg-white w-full text-left text-black font-outfit mt-32">
         <div className="flex w-full ">

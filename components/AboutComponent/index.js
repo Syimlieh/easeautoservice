@@ -40,6 +40,7 @@ function SamplePrevArrow(props) {
     </div>
   );
 }
+
 const AboutComponent = () => {
   const settings = {
     dots: true,

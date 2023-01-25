@@ -7,6 +7,7 @@ import { registerValidate } from "utils/validation";
 import axios from "axios";
 import { registerApi } from "./signupApi";
 import Loader from "components/Loader/Loader";
+
 const SignUpRight = () => {
   const [loading, setLoading] = useState();
   const [resError, setResError] = useState();

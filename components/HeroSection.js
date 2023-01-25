@@ -78,6 +78,15 @@ const HeroSection = () => {
           loading="lazy"
           src="../header-1@2x.png"
         />
+        {/* <Image
+          className="cursor-pointer"
+          alt="EaseAutoService Logo"
+          src="/header-1@2x.png"
+          width={500}
+          height="561px"
+          objectFit="contain"
+          unoptimized
+        /> */}
       </div>
     </div>
   );

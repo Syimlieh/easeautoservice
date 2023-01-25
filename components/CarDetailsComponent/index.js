@@ -1,20 +1,17 @@
 import axios from "axios";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { carDetailValidation } from "utils/validation";
-import { carDetailApi } from "./carDetailApi";
+import { carDetailApi, fetchBrandApi } from "./carDetailApi";
 
-const CarDetailsComponent = () => {
+const CarDetailsComponent = ({ data }) => {
   const router = useRouter();
   const [result, setResult] = useState("");
-  const onCarDetailNextButtonClick = useCallback(() => {
-    router.push("/car_owner");
-  }, [router]);
+  const [brand, setBrand] = useState("");
+  const [modelList, setModelList] = useState("");
+  const [model, setModel] = useState("");
 
-  //formik
-
-  //validation
   async function onSubmit({
     registerYear,
     carBrand,
@@ -22,47 +19,45 @@ const CarDetailsComponent = () => {
     carVariant,
     kilometerDriven,
   }) {
-    async function carDetailApi(
+    carDetailApi({
       registerYear,
       carBrand,
       carModel,
       carVariant,
-      kilometerDriven
-    ) {
-      await axios
-        .post(process.env.NEXT_PUBLIC_ML_MODEL, {
-          company: carBrand,
-          car_models: carModel,
-          year: registerYear,
-          fuel_type: carVariant,
-          kilo_driven: kilometerDriven,
-        })
-        .then((response) => {
-          console.log("machine learning " + response.data);
-          console.log("machine learning " + response.data.result);
-          setResult(response.data.result);
-          return response.data;
-        })
-        .catch((error) => {
-          // setResError(error.response.data.message);
-          console.log(" error: ");
-          console.log(error);
-        });
-    }
-    carDetailApi(registerYear, carBrand, carModel, carVariant, kilometerDriven);
-    // console.log(registerYear, carBrand, carModel, carVariant, kilometerDriven);
+      kilometerDriven,
+    });
   }
+
+  // #formik
   const formik = useFormik({
     initialValues: {
       registerYear: "",
-      carBrand: "",
-      carModel: "",
+      carBrand: brand,
+      carModel: model,
       carVariant: "",
       kilometerDriven: "",
     },
     validate: carDetailValidation,
     onSubmit,
   });
+  useEffect(() => {
+    const fetchModel = async () => {
+      try {
+        const result = await axios.post(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/model`,
+          {
+            brand,
+          }
+        );
+        setModelList(result.data.data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    fetchModel();
+  }, [brand]);
+
+  // console.log(formik.initialValues);
   return (
     <>
       <div className="flex flex-col">
@@ -74,6 +69,36 @@ const CarDetailsComponent = () => {
       <p className="text-brown text-xs text-center">{result}</p>
       <form className="w-full h-auto mt-24" onSubmit={formik.handleSubmit}>
         <div className="flex flex-wrap w-full h-auto">
+          <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
+            <label
+              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
+              htmlFor="carbrand"
+            >
+              Car Brand
+            </label>
+            <div className="w-full relative">
+              <select
+                className={` border-2 border-solid ${
+                  formik.errors.carBrand && formik.touched.carBrand
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                // {...formik.getFieldProps("carBrand")}
+                onChange={(e) => setBrand(e.target.value)}
+              >
+                {data?.map((item, index) => (
+                  <option key={index}>{item.brand}</option>
+                ))}
+              </select>
+              {!brand ? (
+                <span className="text-brown text-xss">
+                  {formik.errors.carBrand}
+                </span>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
@@ -109,40 +134,12 @@ const CarDetailsComponent = () => {
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
-              htmlFor="carbrand"
-            >
-              Car Brand
-            </label>
-            <div className="w-full relative">
-              <input
-                className={` border-2 border-solid ${
-                  formik.errors.carBrand && formik.touched.carBrand
-                    ? "border-brown"
-                    : ""
-                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
-                type="text"
-                id="carbrand"
-                placeholder="Mercedes"
-                {...formik.getFieldProps("carBrand")}
-              />
-              {formik.errors.carBrand && formik.touched.carBrand ? (
-                <span className="text-brown text-xss">
-                  {formik.errors.carBrand}
-                </span>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
-            <label
-              className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
               htmlFor="carModel"
             >
               Car model
             </label>
             <div className="w-full relative">
-              <input
+              {/* <input
                 className={` border-2 border-solid ${
                   formik.errors.carModel && formik.touched.carModel
                     ? "border-brown"
@@ -152,7 +149,19 @@ const CarDetailsComponent = () => {
                 id="carModel"
                 placeholder="Benz C-Class"
                 {...formik.getFieldProps("carModel")}
-              />
+              /> */}
+              <select
+                className={` border-2 border-solid ${
+                  formik.errors.carModel && formik.touched.carModel
+                    ? "border-brown"
+                    : ""
+                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                // {...formik.getFieldProps("carBrand")}
+                onChange={(e) => setModel(e.target.value)}
+              >
+                {modelList &&
+                  modelList?.map((item) => <option>{item.model}</option>)}
+              </select>
               {formik.errors.carModel && formik.touched.carModel ? (
                 <span className="text-brown text-xss">
                   {formik.errors.carModel}

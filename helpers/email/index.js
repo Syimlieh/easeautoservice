@@ -4,7 +4,6 @@ import { html } from "./emailTemplate";
 
 // async..await is not allowed in global scope, must use a wrapper
 export async function sendEmail(email, name, subject, phoneNumber, message) {
-  console.log(email, name, subject, phoneNumber, message);
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     host: process.env.EMAIL_SERVER_HOST,

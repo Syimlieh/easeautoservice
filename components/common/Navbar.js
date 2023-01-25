@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from "next/image";
 const Navbar = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -23,10 +24,15 @@ const Navbar = () => {
   return (
     <nav className=" flex justify-between items-center w-full h-auto py-6">
       <div className="cursor-pointer" onClick={onClickLogo}>
-        <img
-          className=" w-[213.91px] h-[55px] object-contain"
+        <Image
+          onClick={onClickLogo}
+          className="w-[213.91px] h-[55px] cursor-pointer"
           alt="EaseAutoService Logo"
-          src="/logo/easeautoservice_logo.png"
+          src="/logo/easeautoservice_logo.webp"
+          width={220}
+          height={50}
+          objectFit="contain"
+          unoptimized
         />
       </div>
       <div className="  w-[448.21px] h-[55px] flex flex-row p-[0px_20px] box-border items-center justify-center gap-[70px]">
