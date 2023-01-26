@@ -23,11 +23,7 @@ handler.post(async (req, res) => {
         message: "Please enter a brand",
       });
     }
-
-    const model = await Models.find(
-      { brand: "Mahindra" },
-      { model: 1, brand: 1, _id: 0 }
-    );
+    const model = await Models.find({ car_brand: brand });
 
     res.status(200).json({
       success: true,

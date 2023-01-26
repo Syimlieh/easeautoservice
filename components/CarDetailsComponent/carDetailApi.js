@@ -1,28 +1,33 @@
 import axios from "axios";
 
-export async function carDetailApi(
+export async function carDetailApi({
   registerYear,
   carBrand,
-  carModel,
-  carVariant,
-  kilometerDriven
-) {
+  car_models,
+  fuel_type,
+  kilometerDriven,
+  router,
+}) {
   await axios
     .post(process.env.NEXT_PUBLIC_ML_MODEL, {
       company: carBrand,
-      car_models: carModel,
+      car_models: car_models,
       year: registerYear,
-      fuel_type: carVariant,
+      fuel_type: fuel_type,
       kilo_driven: kilometerDriven,
     })
     .then((response) => {
-      console.log("machine learning " + response.data);
-      console.log("machine learning " + response.data.result);
-      return response.data;
+      console.log(response.data);
+      localStorage.setItem(
+        "final_offer",
+        JSON.stringify({
+          price: response.data,
+          model: car_models,
+        })
+      );
+      router.push("/final_offer");
     })
     .catch((error) => {
-      // setResError(error.response.data.message);
-      console.log(" error: ");
-      console.log(error);
+      console.log(" error: Fetching car price " + error?.message);
     });
 }

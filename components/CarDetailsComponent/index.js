@@ -5,39 +5,45 @@ import React, { useCallback, useEffect, useState } from "react";
 import { carDetailValidation } from "utils/validation";
 import { carDetailApi, fetchBrandApi } from "./carDetailApi";
 
-const CarDetailsComponent = ({ data }) => {
+const CarDetailsComponent = () => {
   const router = useRouter();
   const [result, setResult] = useState("");
   const [brand, setBrand] = useState("");
   const [modelList, setModelList] = useState("");
   const [model, setModel] = useState("");
+  const [fuelType, setFuelType] = useState("");
+  const [brandData, setBrandData] = useState("");
 
-  async function onSubmit({
-    registerYear,
-    carBrand,
-    carModel,
-    carVariant,
-    kilometerDriven,
-  }) {
+  async function onSubmit({ registerYear, kilometerDriven }) {
     carDetailApi({
       registerYear,
-      carBrand,
-      carModel,
-      carVariant,
+      carBrand: brand,
+      car_models: model,
+      fuel_type: fuelType,
       kilometerDriven,
+      router,
     });
   }
+  const useFetchBrand = async () => {
+    await axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/brand`)
+      .then((response) => {
+        console.log("Car Brand" + JSON.stringify(response.data));
+        setBrandData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(" error fetching brand");
+      });
+  };
 
   // #formik
   const formik = useFormik({
     initialValues: {
       registerYear: "",
-      carBrand: brand,
-      carModel: model,
-      carVariant: "",
+      fuel_type: "",
       kilometerDriven: "",
     },
-    validate: carDetailValidation,
+    // validate: carDetailValidation,
     onSubmit,
   });
   useEffect(() => {
@@ -54,10 +60,10 @@ const CarDetailsComponent = ({ data }) => {
         console.log("error", error);
       }
     };
+    useFetchBrand();
     fetchModel();
   }, [brand]);
 
-  // console.log(formik.initialValues);
   return (
     <>
       <div className="flex flex-col">
@@ -78,17 +84,14 @@ const CarDetailsComponent = ({ data }) => {
             </label>
             <div className="w-full relative">
               <select
-                className={` border-2 border-solid ${
-                  formik.errors.carBrand && formik.touched.carBrand
-                    ? "border-brown"
-                    : ""
-                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                className={` border-2 border-solid outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 // {...formik.getFieldProps("carBrand")}
                 onChange={(e) => setBrand(e.target.value)}
               >
-                {data?.map((item, index) => (
-                  <option key={index}>{item.brand}</option>
-                ))}
+                {brandData &&
+                  brandData?.map((item, index) => (
+                    <option key={index}>{item.brand}</option>
+                  ))}
               </select>
               {!brand ? (
                 <span className="text-brown text-xss">
@@ -99,6 +102,7 @@ const CarDetailsComponent = ({ data }) => {
               )}
             </div>
           </div>
+          {/* Registration Year ------------------> */}
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
@@ -131,6 +135,7 @@ const CarDetailsComponent = ({ data }) => {
               )}
             </div>
           </div>
+          {/* car Model  -----------------------> */}
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
@@ -139,30 +144,17 @@ const CarDetailsComponent = ({ data }) => {
               Car model
             </label>
             <div className="w-full relative">
-              {/* <input
-                className={` border-2 border-solid ${
-                  formik.errors.carModel && formik.touched.carModel
-                    ? "border-brown"
-                    : ""
-                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
-                type="text"
-                id="carModel"
-                placeholder="Benz C-Class"
-                {...formik.getFieldProps("carModel")}
-              /> */}
               <select
-                className={` border-2 border-solid ${
-                  formik.errors.carModel && formik.touched.carModel
-                    ? "border-brown"
-                    : ""
-                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
-                // {...formik.getFieldProps("carBrand")}
+                className={` border-2 border-solid outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
                 onChange={(e) => setModel(e.target.value)}
               >
+                <option value="">Please Select Car Model</option>
                 {modelList &&
-                  modelList?.map((item) => <option>{item.model}</option>)}
+                  modelList?.map((item, index) => (
+                    <option key={index}>{item.model}</option>
+                  ))}
               </select>
-              {formik.errors.carModel && formik.touched.carModel ? (
+              {!model ? (
                 <span className="text-brown text-xss">
                   {formik.errors.carModel}
                 </span>
@@ -171,35 +163,37 @@ const CarDetailsComponent = ({ data }) => {
               )}
             </div>
           </div>
+
+          {/* //car Fuel Type -------------> */}
           <div className="flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
               htmlFor="carVariant"
             >
-              Car Variant
+              Car Fuel Type
             </label>
             <div className="w-full relative">
-              <input
-                className={` border-2 border-solid ${
-                  formik.errors.carVariant && formik.touched.carVariant
-                    ? "border-brown"
-                    : ""
-                } outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
-                type="text"
-                placeholder="C-220d"
-                id="carVariant"
-                {...formik.getFieldProps("carVariant")}
-              />
-              {formik.errors.carVariant && formik.touched.carVariant ? (
+              <select
+                className={` border-2 border-solid outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+                onChange={(e) => setFuelType(e.target.value)}
+              >
+                <option value="Petrol" label="Petrol">
+                  Petrol
+                </option>
+                <option value="Diesel" label="Diesel">
+                  Diesel
+                </option>
+              </select>
+              {!fuelType ? (
                 <span className="text-brown text-xss">
-                  {formik.errors.carVariant}
+                  {formik.errors.carFuelType}
                 </span>
               ) : (
                 <></>
               )}
             </div>
           </div>
-
+          {/* Kilometer Driven ------------------------> */}
           <div className=" flex flex-col w-1/2 h-auto pr-6 mb-8">
             <label
               className="cursor-pointer  text-xs font-medium font-poppins text-gray-500 text-left inline-block"
@@ -233,7 +227,6 @@ const CarDetailsComponent = ({ data }) => {
         </div>
         <button
           className="mt-8 cursor-pointer [border:none] p-[10px_35px] text-xs bg-indigo-200 text-white font-outfit text-center rounded-[20px] flex flex-row box-border items-center justify-center"
-          // onClick={onCarDetailNextButtonClick}
           type="submit"
         >
           Next Step

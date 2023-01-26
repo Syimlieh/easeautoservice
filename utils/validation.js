@@ -83,8 +83,8 @@ export function carDetailValidation(values) {
     errors.carModel = "Required";
   }
 
-  if (!values.carVariant) {
-    errors.carVariant = "Required";
+  if (!values.carFuelType) {
+    errors.carFuelType = "Required";
   }
 
   if (!values.kilometerDriven) {

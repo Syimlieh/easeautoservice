@@ -1,13 +1,19 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "components/Layout";
 
 const FInalOffer = () => {
   const router = useRouter();
 
+  const [offer, setOffer] = useState(
+    JSON.parse(localStorage.getItem("final_offer"))
+  );
+
   const onFinalOfferAceptButtonClick = useCallback(() => {
     router.push("/accepted");
   }, [router]);
+
+  useEffect(() => {}, []);
 
   return (
     <Layout>
@@ -21,7 +27,12 @@ const FInalOffer = () => {
             <p className="mb-8">
               Thank you for submitting your car's information to our service.
               After reviewing all the details, we are pleased to offer you
-              [final offer] for your [year, make, model] car.
+              bettween &nbsp;
+              <span className="text-brown text-base">
+                {offer.price.min_price} - {offer.price.max_price}
+              </span>
+              &nbsp; for your{" "}
+              <span className="text-brown text-base">{offer.model}</span> car.
             </p>
             <p className="mb-8">
               If you accept this offer, we will handle all the paperwork for you
@@ -35,7 +46,7 @@ const FInalOffer = () => {
             </p>
           </div>
           <button
-            className="m-auto cursor-pointer mt-24 [border:none] p-[1rem_4rem] text-base font-semibold font-poppins text-white text-center bg-indigo-300 rounded-[10px] flex items-start justify-start"
+            className="m-auto cursor-pointer mt-24 [border:none] p-[.7rem_3.4rem] text-base font-semibold font-poppins text-white text-center bg-indigo-300 rounded-[10px] flex items-start justify-start"
             onClick={onFinalOfferAceptButtonClick}
           >
             Accept
