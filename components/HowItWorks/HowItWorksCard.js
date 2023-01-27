@@ -15,7 +15,9 @@ const HowItWorksCard = ({ number, message, color }) => {
           {number}
         </div>
       </div>
-      <div className="text-base text-black mt-28 pr-4">{message}</div>
+      <div className="text-sm lg:text-base text-black mt-28 pr-4">
+        {message}
+      </div>
     </div>
   );
 };

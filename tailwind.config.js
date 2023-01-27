@@ -5,9 +5,36 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      "3xs": "320px",
+      // => @media (min-width: 320px) { ... }
+
+      "2xs": "400px",
+      // => @media (min-width: 400px) { ... }
+
+      xs: "576px",
+      // => @media (min-width: 576px) { ... }
+
+      md: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1300px",
+    },
     container: {
       center: true,
-      padding: "10rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        lg: "5rem",
+        xl: "8rem",
+        "2xl": "10rem",
+      },
     },
     extend: {
       fontFamily: {

@@ -5,15 +5,15 @@ import Layout from "components/Layout";
 const FInalOffer = () => {
   const router = useRouter();
 
-  const [offer, setOffer] = useState(
-    JSON.parse(localStorage.getItem("final_offer"))
-  );
+  const [offer, setOffer] = useState();
 
   const onFinalOfferAceptButtonClick = useCallback(() => {
     router.push("/accepted");
   }, [router]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setOffer(JSON.parse(localStorage.getItem("final_offer")));
+  }, []);
 
   return (
     <Layout>
@@ -29,10 +29,22 @@ const FInalOffer = () => {
               After reviewing all the details, we are pleased to offer you
               bettween &nbsp;
               <span className="text-brown text-base">
-                {offer.price.min_price} - {offer.price.max_price}
+                {offer?.price.min_price < 0 ? (
+                  <span>
+                    {offer?.price.min_price.toString().replace(/\-/g, "")}
+                    &nbsp;&nbsp; - &nbsp;&nbsp;
+                    {offer?.price.max_price.toString().replace(/\-/g, "")}
+                  </span>
+                ) : (
+                  <span>
+                    {offer?.price.min_price} &nbsp;&nbsp; - &nbsp;&nbsp;
+                    {offer?.price.max_price}
+                  </span>
+                )}
+                {/* {offer?.price.min_price} - {offer?.price.max_price} */}
               </span>
               &nbsp; for your{" "}
-              <span className="text-brown text-base">{offer.model}</span> car.
+              <span className="text-brown text-base">{offer?.model}</span> car.
             </p>
             <p className="mb-8">
               If you accept this offer, we will handle all the paperwork for you

@@ -3,7 +3,7 @@ import { data } from "./howItWorksData";
 
 const HowItWorks = () => {
   return (
-    <section className="flex flex-col p-[4rem_0] box-border items-center justify-start gap-[8rem] text-center text-3xl text-black font-outfit">
+    <section className="flex flex-col p-[4rem_0] box-border items-center justify-start gap-[8rem] text-center text-[2.2rem] xl:text-3xl md:text-2xl text-black font-outfit">
       <div className="flex flex-col items-center  shrink-0">
         <div className="capitalize font-semibold inline-block w-[55rem]">
           <span>We make things</span>
@@ -15,7 +15,7 @@ const HowItWorks = () => {
           How It Works
         </div>
       </div>
-      <div className="relative w-full h-auto shrink-0 text-left text-xl text-white flex justify-between">
+      <div className="relative w-full h-auto shrink-0 text-left text-xl text-white flex justify-between flex-wrap">
         {data &&
           data.map((item) => (
             <HowItWorksCard
