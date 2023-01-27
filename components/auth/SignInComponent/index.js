@@ -13,6 +13,7 @@ const SignInComponent = () => {
   return (
     <div className="container py-6">
       <Image
+        unoptimized
         onClick={onClickLogo}
         className="w-[213.91px] h-[55px] cursor-pointer"
         alt="EaseAutoService Logo"

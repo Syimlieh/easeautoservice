@@ -28,6 +28,7 @@ const SignInLeft = () => {
       </div>
       <div className="mt-8 text-center">
         <Image
+          unoptimized
           src="/saly141@2x.png"
           alt="easeAuto Sign up illustration"
           width={200}

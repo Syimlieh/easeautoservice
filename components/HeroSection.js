@@ -80,13 +80,13 @@ const HeroSection = () => {
           src="../header-1@2x.png"
         /> */}
         <Image
+          unoptimized
           className="cursor-pointer "
           alt="EaseAutoService Logo"
           src="/header-1@2x.png"
           width={900}
           height="561px"
           objectFit="contain"
-          // unoptimized
         />
       </div>
     </div>

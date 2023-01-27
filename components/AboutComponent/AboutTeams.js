@@ -17,6 +17,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
             <span className="absolute -top-8 -left-12 inline-block w-32 h-32 bg-brown rounded-full "></span>
             <div className="rounded-full w-40 h-40 z-10 border-[5px] border-solid border-white box-content">
               <Image
+                unoptimized
                 src={profile}
                 alt="EaseAutoService Teams Profile Picture"
                 width={200}
@@ -35,6 +36,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
       </div>
       <div className=" m-auto flex item-center justify-center gap-12 mt-12 ">
         <Image
+          unoptimized
           src="/instagram@2x.png"
           alt="EaseautoService team Instagram profile"
           width={30}
@@ -43,6 +45,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
           className="rounded-full cursor-pointer"
         />
         <Image
+          unoptimized
           src="/facebook@2x.png"
           alt="EaseautoService team facebook profile"
           width={30}

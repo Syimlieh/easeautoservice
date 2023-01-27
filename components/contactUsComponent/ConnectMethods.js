@@ -11,6 +11,7 @@ const ConnectMethods = () => {
         <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
+              unoptimized
               className="bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
               alt="easeAuto email icon"
               loading="lazy"
@@ -32,6 +33,7 @@ const ConnectMethods = () => {
         <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
+              unoptimized
               className="   bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
               alt="easeAuto email icon"
               loading="lazy"
@@ -56,6 +58,7 @@ const ConnectMethods = () => {
         <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
+              unoptimized
               className="   bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
               alt="easeAuto email icon"
               loading="lazy"

@@ -25,6 +25,7 @@ const Navbar = () => {
     <nav className=" flex justify-between items-center w-full h-auto py-6">
       <div className="cursor-pointer" onClick={onClickLogo}>
         <Image
+          unoptimized
           onClick={onClickLogo}
           className="w-[213.91px] h-[55px] cursor-pointer"
           alt="EaseAutoService Logo"

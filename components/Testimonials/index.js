@@ -15,6 +15,7 @@ function SampleNextArrow(props) {
       className="w-[77px] h-[77px] absolute top-1/2 -left-32 transform -translate-y-1/2 cursor-pointer"
     >
       <Image
+        unoptimized
         src="/testimonial-back-arrow.svg"
         alt="testimonial back arrow"
         width={100}
@@ -32,6 +33,7 @@ function SamplePrevArrow(props) {
       className="w-[77px] h-[77px] absolute top-1/2 -right-32 transform -translate-y-1/2 cursor-pointer"
     >
       <Image
+        unoptimized
         src="/testimonial-next-arrow.svg"
         alt="testimonial back arrow"
         width={100}

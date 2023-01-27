@@ -14,6 +14,7 @@ const TestimonialsCard = ({ name, profile, message }) => {
             <span className="absolute -top-8 -left-12 inline-block w-32 h-32 bg-brown rounded-full "></span>
             <div className="rounded-full w-40 h-40 z-10 border-[5px] border-solid border-white box-content">
               <Image
+                unoptimized
                 src={profile}
                 alt="EaseAutoService Teams Profile Picture"
                 width={200}
