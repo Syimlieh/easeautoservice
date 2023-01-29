@@ -88,6 +88,7 @@ const CarDetailsComponent = () => {
                 // {...formik.getFieldProps("carBrand")}
                 onChange={(e) => setBrand(e.target.value)}
               >
+                <option value="">Please Select Car Brand</option>
                 {brandData &&
                   brandData?.map((item, index) => (
                     <option key={index}>{item.brand}</option>

@@ -44,8 +44,8 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="text-left text-sm text-gray-600 font-outfit flex justify-between">
-      <div className="w-[55%] h-[419px] 3xs:w-[90%]">
+    <div className="text-left text-sm text-gray-600 font-outfit flex justify-between heroSection">
+      <div className="w-[55%] 3xs:w-[90%]">
         <h2 className="  text-[2.2rem] xl:text-3xl md:text-2xl border border-gray-400 font-bold font-inherit inline-block w-full text-black">
           <span>Sell Your </span>
           <span className="text-brown">Used Car</span>
@@ -89,6 +89,7 @@ const HeroSection = () => {
           objectFit="contain"
         />
       </div>
+      <style jsx>{``}</style>
     </div>
   );
 };

@@ -21,7 +21,6 @@ const SignInComponent = () => {
         width={220}
         height={50}
         objectFit="contain"
-        unoptimized
       />
       <div className=" relative bg-white w-full text-left text-black font-outfit mt-32">
         <div className="flex w-full ">

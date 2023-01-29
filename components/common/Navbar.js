@@ -1,9 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 const Navbar = () => {
   const router = useRouter();
+  const [open, setOpen] = useState();
+
   const { data: session } = useSession();
   const onAboutClick = useCallback(() => {
     router.push("/about_us");
@@ -22,7 +26,14 @@ const Navbar = () => {
   }, [router]);
 
   return (
-    <nav className=" flex justify-between items-center w-full h-auto py-6">
+    <nav className="flex justify-between items-center w-full h-auto py-6">
+      <div
+        className={
+          open
+            ? "overlay h-screen lg:hidden w-screen bg-indigo-200 fixed top-0 right-0 opacity-60 z-10  transition-all ease-in-out delay-150"
+            : "fixed top-0 right-[-200%]  "
+        }
+      ></div>
       <div className="cursor-pointer" onClick={onClickLogo}>
         <Image
           unoptimized
@@ -33,43 +44,84 @@ const Navbar = () => {
           width={220}
           height={50}
           objectFit="contain"
-          unoptimized
         />
       </div>
-      <div className="  w-[448.21px] h-[55px] flex flex-row p-[0px_20px] box-border items-center justify-center gap-[70px]">
-        <p
-          className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
-          onClick={onAboutClick}
+      <div className={open ? `nav-menu active` : "nav-menu "}>
+        <div
+          className="absolute right-0 top-0 m-6 text-xl"
+          onClick={() => setOpen(!open)}
         >
-          About Us
-        </p>
-        <p
-          className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
-          onClick={onContactClick}
-        >
-          Contact
-        </p>
-        <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
-          Services
-        </p>
-      </div>
-      <div className="cursor-pointer [border:none] p-[0] bg-[transparent]  w-[134.8px] h-[47px]">
-        {session ? (
-          <button
-            className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
-            onClick={() => signOut()}
+          <IoMdClose className="lg:hidden" />
+        </div>
+
+        <div className="menu-list w-[448.21px] h-auto lg:h-[55px] flex flex-col lg:flex-row p-[0px_20px] box-border items-center justify-center gap-[40px] lg:gap-[70px]">
+          <p
+            className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
+            onClick={onAboutClick}
           >
-            Log Out
-          </button>
-        ) : (
-          <button
-            className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
-            onClick={onSigninButton}
+            About Us
+          </p>
+          <p
+            className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
+            onClick={onContactClick}
           >
-            Sign In
-          </button>
-        )}
+            Contact
+          </p>
+          <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
+            Services
+          </p>
+        </div>
+        <div className="cursor-pointer flex [border:none] p-[0] bg-[transparent] w-[134.8px] h-[47px]">
+          {session ? (
+            <button
+              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+              onClick={() => signOut()}
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+              onClick={onSigninButton}
+            >
+              Sign In
+            </button>
+          )}
+        </div>
       </div>
+      <div
+        className="hamburger-btn text-xl flex"
+        onClick={() => setOpen(!open)}
+      >
+        <RxHamburgerMenu className="lg:hidden" />
+      </div>
+      <style jsx>{`
+        .nav-menu {
+          display: flex;
+        }
+        @media (max-width: 1024px) {
+          .nav-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 60px;
+            height: 100vh;
+            position: fixed;
+            right: -200%;
+            top: 0;
+            z-index: 10;
+            background-color: #fff;
+            padding: 6rem 0 4rem;
+            will-change: position;
+            transition: 0.3s ease-in-out;
+            transition-property: all;
+          }
+          .nav-menu.active {
+            right: 0;
+          }
+        }
+      `}</style>
     </nav>
   );
 };

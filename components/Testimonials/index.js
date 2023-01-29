@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import { data } from "./testimonialsData";
+import { useWindowSize } from "hooks/useWindowSize";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -42,7 +43,10 @@ function SamplePrevArrow(props) {
     </div>
   );
 }
+
 const Testimonials = () => {
+  const width = useWindowSize();
+  console.log({ width });
   const settings = {
     dots: true,
     infinite: true,

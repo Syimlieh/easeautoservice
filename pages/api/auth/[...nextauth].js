@@ -11,6 +11,7 @@ import Users from "model/Users";
 import { hashCompare } from "helpers/hashing";
 
 export default NextAuth({
+  site: process.env.NEXTAUTH_URL,
   adapter: MongoDBAdapter(clientPromise),
   secret: process.env.JWT_SECRET_KEY,
   session: {

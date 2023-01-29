@@ -1,11 +1,11 @@
 import React from "react";
 
-const HowItWorksCard = ({ number, message, color }) => {
+const HowItWorksCard = ({ number, message, color, key }) => {
   const bgStyle = {
     backgroundColor: color,
   };
   return (
-    <div className="w-[25rem] h-[32rem]">
+    <div className="w-[25rem] h-auto py-8" key={key}>
       <div className="w-[75.89px] h-[75px] relative">
         <span
           className="inline-block h-full w-full rounded-full"
@@ -15,9 +15,7 @@ const HowItWorksCard = ({ number, message, color }) => {
           {number}
         </div>
       </div>
-      <div className="text-sm lg:text-base text-black mt-28 pr-4">
-        {message}
-      </div>
+      <p className=" text-3xs lg:text-xs  text-black mt-16 pr-4">{message}</p>
     </div>
   );
 };
