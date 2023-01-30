@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import CarOwnerComponent from "components/CarOwnerComponent";
+import CarOwnerComponent from "components/CarOwner";
 
 const CarOwner = () => {
   return (

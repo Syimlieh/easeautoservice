@@ -1,5 +1,5 @@
-import ConnectMethods from "components/contactUsComponent/ConnectMethods";
-import ContactUsComponent from "components/contactUsComponent";
+import ConnectMethods from "components/ContactUs/ConnectMethods";
+import ContactUsComponent from "components/ContactUs";
 import Layout from "components/Layout";
 import React from "react";
 

@@ -5,7 +5,7 @@ const HowItWorks = () => {
   return (
     <section className="flex flex-col p-[8rem_0_4rem] box-border items-center justify-start gap-[8rem] text-center text-[2.2rem] xl:text-3xl md:text-2xl text-black font-outfit">
       <div className="flex flex-col items-center  shrink-0">
-        <h3 className="capitalize text-xs lg:text-base font-semibold">
+        <h3 className="capitalize text-lg lg:text-2xl font-semibold">
           We make things
           <span className="text-brown"> easy </span>
           for your
@@ -15,7 +15,7 @@ const HowItWorks = () => {
           How It Works
         </div>
       </div>
-      <div className="relative w-full h-auto shrink-0 text-left text-xl text-white flex justify-center flex-wrap">
+      <div className="relative w-full h-auto shrink-0 text-left text-xl text-white flex justify-between flex-wrap">
         {data &&
           data.map((item) => (
             <HowItWorksCard

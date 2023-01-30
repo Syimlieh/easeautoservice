@@ -1,5 +1,5 @@
 import Navbar from "../components/common/Navbar";
-import AboutComponent from "components/AboutComponent";
+import AboutComponent from "components/AboutUs";
 import Layout from "components/Layout";
 
 const AboutPage = () => {

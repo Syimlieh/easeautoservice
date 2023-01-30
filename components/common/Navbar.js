@@ -71,17 +71,17 @@ const Navbar = () => {
             Services
           </p>
         </div>
-        <div className="cursor-pointer flex [border:none] p-[0] bg-[transparent] w-[134.8px] h-[47px]">
+        <div className="cursor-pointer flex [border:none] p-[0] bg-[transparent] w-[134.8px]">
           {session ? (
             <button
-              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center self-center flex items-center justify-center"
               onClick={() => signOut()}
             >
               Log Out
             </button>
           ) : (
             <button
-              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center flex items-center justify-center"
+              className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center self-center flex items-center justify-center"
               onClick={onSigninButton}
             >
               Sign In

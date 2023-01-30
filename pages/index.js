@@ -1,17 +1,17 @@
 import Layout from "components/Layout";
 import HeroSection from "components/HeroSection";
 import HowItWorks from "components/HowItWorks";
-import TeamsSection from "components/TeamsSection";
 import Testimonials from "components/Testimonials";
+import Teams from "components/Teams";
 
 const ContactUs = () => {
   return (
     <Layout>
-      <div className="relative bg-white w-full text-center  text-black font-outfit mt-32">
+      <div className="relative bg-white w-full text-center overflow-hidden text-black font-outfit mt-32">
         <HeroSection />
         <HowItWorks />
         <Testimonials />
-        <TeamsSection />
+        <Teams />
       </div>
     </Layout>
   );

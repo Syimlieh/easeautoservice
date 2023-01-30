@@ -1,6 +1,6 @@
 import React from "react";
 import AboutTeams from "./AboutTeams";
-import { data } from "./aboutTeamsData";
+import { data } from "../common/teamsData";
 import Image from "next/image";
 //react slick
 import "slick-carousel/slick/slick.css";

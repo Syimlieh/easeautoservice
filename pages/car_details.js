@@ -1,5 +1,5 @@
 import Layout from "components/Layout";
-import CarDetailsComponent from "components/CarDetailsComponent";
+import CarDetailsComponent from "components/CarDetails";
 import axios from "axios";
 
 const CarDetails = () => {
