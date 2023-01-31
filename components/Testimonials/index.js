@@ -47,7 +47,7 @@ function SamplePrevArrow(props) {
 
 const Testimonials = () => {
   const width = useWindowSize();
-  console.log({ width });
+
   const settings = {
     dots: true,
     infinite: true,
@@ -60,7 +60,7 @@ const Testimonials = () => {
   return (
     <section className="flex flex-col p-[4rem_0] box-border items-center justify-start gap-[8rem] text-center text-2xl text-black font-poppins">
       <div className="relative shrink-0 flex flex-col">
-        <h2 className="text-lg lg:text-2xl font-semibold font-outfit inline-block text-brown">
+        <h2 className="text-lg lg:text-[3.5rem] font-semibold font-outfit inline-block text-brown">
           Testimonials
         </h2>
         <h4 className="text-2xs lg:text-sm font-semibold font-inherit inline-block">

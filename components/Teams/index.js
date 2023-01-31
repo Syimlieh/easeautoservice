@@ -28,7 +28,7 @@ const Teams = () => {
   };
   return (
     <section className="h-auto  mt-32 flex flex-col p-[4rem_0] box-border items-center justify-start gap-[8rem] text-center text-3xl text-black font-outfit">
-      <h2 className=" text-lg lg:text-2xl font-semibold font-outfit inline-block ">
+      <h2 className=" text-lg lg:text-[3.5rem] font-semibold font-outfit inline-block ">
         <span>Meets Our</span>
         <span className="text-brown"> Teams</span>
       </h2>

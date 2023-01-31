@@ -9,6 +9,10 @@ const Navbar = () => {
   const [open, setOpen] = useState();
 
   const { data: session } = useSession();
+  const onHomeClick = useCallback(() => {
+    router.push("/");
+  }, [router]);
+
   const onAboutClick = useCallback(() => {
     router.push("/about_us");
   }, [router]);
@@ -54,7 +58,13 @@ const Navbar = () => {
           <IoMdClose className="lg:hidden" />
         </div>
 
-        <div className="menu-list w-[448.21px] h-auto lg:h-[55px] flex flex-col lg:flex-row p-[0px_20px] box-border items-center justify-center gap-[40px] lg:gap-[70px]">
+        <div className="menu-list  h-auto lg:h-[55px] flex flex-col lg:flex-row p-[0px_20px] box-border items-center justify-center gap-[40px] lg:gap-[70px]">
+          <p
+            className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
+            onClick={onHomeClick}
+          >
+            Home
+          </p>
           <p
             className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block cursor-pointer"
             onClick={onAboutClick}
@@ -67,9 +77,9 @@ const Navbar = () => {
           >
             Contact
           </p>
-          <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
+          {/* <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
             Services
-          </p>
+          </p> */}
         </div>
         <div className="cursor-pointer flex [border:none] p-[0] bg-[transparent] w-[134.8px]">
           {session ? (
@@ -98,14 +108,16 @@ const Navbar = () => {
       <style jsx>{`
         .nav-menu {
           display: flex;
+          gap: 6rem;
         }
         @media (max-width: 1024px) {
           .nav-menu {
             display: flex;
+
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            gap: 60px;
+
             height: 100vh;
             position: fixed;
             right: -200%;
@@ -116,9 +128,15 @@ const Navbar = () => {
             will-change: position;
             transition: 0.3s ease-in-out;
             transition-property: all;
+            width: 39rem;
           }
           .nav-menu.active {
             right: 0;
+          }
+        }
+        @media (max-width: 400px) {
+          .nav-menu {
+            width: 100%;
           }
         }
       `}</style>
