@@ -3,12 +3,12 @@ import Image from "next/image";
 const ConnectMethods = () => {
   return (
     <div className="w-full mt-32">
-      <h5 className=" text-2xl font-semibold font-poppins inline-block">
+      <h5 className=" text-lg lg:text-2xl font-semibold font-poppins inline-block">
         <span className="uppercase text-brown">connect</span>
         <span> with Us</span>
       </h5>
-      <div className=" flex justify-between h-auto text-center text-black font-outfit mt-12">
-        <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
+      <div className=" flex justify-start flex-wrap gap-6 h-auto text-center text-black font-outfit mt-12">
+        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
               unoptimized
@@ -20,7 +20,7 @@ const ConnectMethods = () => {
               height={80}
             />
           </div>
-          <h5 className=" text-lg font-semibold font-poppins inline-block">
+          <h5 className=" text-base font-semibold font-poppins inline-block">
             Email
           </h5>
           <p className="mt-12 text-sm">Our Team is here to help</p>
@@ -30,7 +30,7 @@ const ConnectMethods = () => {
             </p>
           </div>
         </div>
-        <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
+        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
               unoptimized
@@ -42,7 +42,7 @@ const ConnectMethods = () => {
               height={80}
             />
           </div>
-          <h5 className=" text-lg font-semibold font-poppins inline-block">
+          <h5 className=" text-base font-semibold font-poppins inline-block">
             Location
           </h5>
           <p className="mt-12 text-sm">Our Team is here to help</p>
@@ -55,7 +55,7 @@ const ConnectMethods = () => {
             </p>
           </div>
         </div>
-        <div className="h-[26rem] w-[34rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
+        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
             <Image
               unoptimized
@@ -67,7 +67,7 @@ const ConnectMethods = () => {
               height={80}
             />
           </div>
-          <h5 className=" text-lg font-semibold font-poppins inline-block">
+          <h5 className=" text-base font-semibold font-poppins inline-block">
             Phone
           </h5>
           <p className="mt-12 text-sm">Mon-Friday 9AM to 6PM</p>

@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import "styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import ErrorContextProvider from "context/errorContext";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Component {...pageProps} />
+      <ErrorContextProvider>
+        <Component {...pageProps} />
+      </ErrorContextProvider>
     </SessionProvider>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
-const HowItWorksCard = ({ number, message, color, key }) => {
+const HowItWorksCard = ({ number, message, color }) => {
   const bgStyle = {
     backgroundColor: color,
   };
   return (
-    <div className="w-[25rem] h-auto py-8" key={key}>
+    <div className="w-[25rem] h-auto py-8">
       <div className="w-[75.89px] h-[75px] relative">
         <span
           className="inline-block h-full w-full rounded-full"

@@ -1,4 +1,4 @@
-import SignInComponent from "components/auth/SignInComponent";
+import SignInComponent from "components/auth/SignIn";
 import React from "react";
 
 const SignIn = () => {

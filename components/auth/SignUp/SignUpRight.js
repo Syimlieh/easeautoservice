@@ -7,6 +7,7 @@ import { registerValidate } from "utils/validation";
 import axios from "axios";
 import { registerApi } from "./signupApi";
 import Loader from "components/Loader/Loader";
+import Link from "next/link";
 
 const SignUpRight = () => {
   const [loading, setLoading] = useState();
@@ -49,8 +50,8 @@ const SignUpRight = () => {
   });
 
   return (
-    <div className="w-[40%]">
-      <h2 className="text-[4.8rem] font-semibold font-inherit text-brown">
+    <div className="w-full lg:w-[40%] ">
+      <h2 className="text-lg lg:text-[4rem] font-semibold font-inherit text-brown">
         Sign Up
       </h2>
       <form className="relative h-auto mt-24" onSubmit={formik.handleSubmit}>
@@ -66,7 +67,7 @@ const SignUpRight = () => {
               formik.errors.firstName && formik.touched.firstName
                 ? "border-brown"
                 : ""
-            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-4 px-8 text-gray-300 text-left`}
             name="firstName"
             placeholder="Enter firstName"
             autoFocus
@@ -87,7 +88,7 @@ const SignUpRight = () => {
               formik.errors.lastName && formik.touched.lastName
                 ? "border-brown"
                 : ""
-            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-4 px-8 text-gray-300 text-left`}
             placeholder="Enter lastName"
             {...formik.getFieldProps("lastName")}
           />
@@ -104,7 +105,7 @@ const SignUpRight = () => {
             type="email"
             className={` border-2 border-solid ${
               formik.errors.email && formik.touched.email ? "border-brown" : ""
-            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-4 px-8 text-gray-300 text-left`}
             placeholder="Enter Email"
             {...formik.getFieldProps("email")}
           />
@@ -120,7 +121,7 @@ const SignUpRight = () => {
               formik.errors.phoneNumber && formik.touched.phoneNumber
                 ? "border-brown"
                 : ""
-            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-4 px-8 text-gray-300 text-left`}
             type="tel"
             placeholder="Phone Number"
             {...formik.getFieldProps("phoneNumber")}
@@ -140,7 +141,7 @@ const SignUpRight = () => {
               formik.errors.password && formik.touched.password
                 ? "border-brown"
                 : ""
-            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-6 px-8 text-gray-300 text-left`}
+            }  outline-none bg-gray-100 rounded-[8px] w-full text-3xs font-poppins py-4 px-8 text-gray-300 text-left`}
             type="password"
             placeholder="Password"
             minLength={8}
@@ -155,7 +156,7 @@ const SignUpRight = () => {
           )}
         </div>
         <button
-          className="mt-8 cursor-pointer h-20 [border:none] rounded-[8px] w-full text-xs bg-indigo-200  text-white font-outfit text-center flex box-border items-center justify-center"
+          className="mt-8 cursor-pointer py-4 px-8 [border:none] rounded-[8px] w-full text-xs bg-indigo-200  text-white font-outfit text-center flex box-border items-center justify-center"
           type="submit"
         >
           {loading ? (
@@ -168,6 +169,11 @@ const SignUpRight = () => {
         </button>
       </form>
       {/*  */}
+      <Link href="/auth/signin">
+        <p className="mt-8 text-3xs text-center cursor-pointer">
+          Click Here to <span className=" text-indigo-200">Register</span>
+        </p>
+      </Link>
       <div className="flex flex-col gap-12 items-center">
         <h5 className="mt-24 text-base  font-normal font-inherit text-gray-200 inline-block">
           Or continue with
@@ -177,8 +183,8 @@ const SignUpRight = () => {
             unoptimized
             src="/google1@2x.png"
             alt="google auth icon"
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             objectFit="cover"
           />
           <span className="font-medium inline-block">Sing up with Google</span>

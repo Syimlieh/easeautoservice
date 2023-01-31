@@ -9,7 +9,7 @@ const SignInLeft = () => {
   }, [router]);
 
   return (
-    <div className="w-[50%]">
+    <div className="w-[50%] hidden lg:block">
       <h2 className="text-2xl font-semibold font-inherit text-gray-800">
         <span>Welcome to</span>
         <span className="text-brown"> EasyAuto</span>

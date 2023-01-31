@@ -1,17 +1,18 @@
 import React, { useCallback } from "react";
 import { useRouter } from "next/router";
-import SignInLeft from "./SignInLeft";
-import SignInRight from "./SignInRight";
+import SignUpLeft from "./SignUpLeft";
+import SignUpRight from "./SignUpRight";
 import Footer from "components/common/Footer";
 import Image from "next/image";
 
-const SignInComponent = () => {
+const SignUpComponent = () => {
   const router = useRouter();
   const onClickLogo = useCallback(() => {
     router.push("/");
   }, [router]);
+
   return (
-    <div className="container py-6">
+    <div className="container pt-6">
       <Image
         unoptimized
         onClick={onClickLogo}
@@ -24,8 +25,8 @@ const SignInComponent = () => {
       />
       <div className=" relative bg-white w-full text-left text-black font-outfit mt-32">
         <div className="flex w-full ">
-          <SignInLeft />
-          <SignInRight />
+          <SignUpLeft />
+          <SignUpRight />
         </div>
       </div>
       <Footer />
@@ -33,4 +34,4 @@ const SignInComponent = () => {
   );
 };
 
-export default SignInComponent;
+export default SignUpComponent;
