@@ -12,7 +12,7 @@ export const data = [
     name: "MD Rashid",
     message:
       "As a data analyst, I am passionate about using data to tell stories and inform decision making. I am skilled in collecting, cleaning, and analyzing data from various sources, and have experience using tools such as Excel, SQL, and Python to uncover insights and trends. I enjoy collaborating with others and using my skills to solve real-world problems.",
-    profile: "/teams/rashid.png",
+    profile: "/teams/rashid.webp",
     role: "Data Analyst",
   },
   {

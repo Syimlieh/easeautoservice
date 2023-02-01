@@ -29,7 +29,7 @@ const SignInLeft = () => {
       <div className="mt-8 text-center">
         <Image
           unoptimized
-          src="/saly141@2x.png"
+          src="/saly141@2x.webp"
           alt="easeAuto Sign up illustration"
           width={200}
           loading="lazy"

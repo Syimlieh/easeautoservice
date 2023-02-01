@@ -77,11 +77,8 @@ const Navbar = () => {
           >
             Contact
           </p>
-          {/* <p className="m-[0] relative text-xs font-hind-kochi text-black text-left inline-block">
-            Services
-          </p> */}
         </div>
-        <div className="cursor-pointer flex [border:none] p-[0] bg-[transparent] w-[134.8px]">
+        <div className="cursor-pointer flex [border:none] p-[0]  bg-[transparent] w-[134.8px]">
           {session ? (
             <button
               className="cursor-pointer [border:none] whitespace-nowrap bg-indigo-200 rounded-xl p-[.8rem_4rem] text-xs font-hind-kochi text-white text-center self-center flex items-center justify-center"
@@ -100,10 +97,10 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className="hamburger-btn text-xl flex"
+        className="hamburger-btn lg:hidden text-xl flex"
         onClick={() => setOpen(!open)}
       >
-        <RxHamburgerMenu className="lg:hidden" />
+        <RxHamburgerMenu className="" />
       </div>
       <style jsx>{`
         .nav-menu {
@@ -113,11 +110,9 @@ const Navbar = () => {
         @media (max-width: 1024px) {
           .nav-menu {
             display: flex;
-
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-
             height: 100vh;
             position: fixed;
             right: -200%;

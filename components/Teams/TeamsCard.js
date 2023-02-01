@@ -5,7 +5,7 @@ import React from "react";
 const TeamsCard = ({ profile, name, role, message, key }) => {
   return (
     <div
-      className="border-1 border-solid border-[#FF6B00] rounded-3xl p-8 mr-6 bg-[#FFE9E9]"
+      className="border-1 border-solid border-[#FF6B00] rounded-3xl p-8 py-16 mr-6 bg-[#FFE9E9]"
       key={key}
     >
       <div>
@@ -30,14 +30,16 @@ const TeamsCard = ({ profile, name, role, message, key }) => {
           <p className="text-2xs mt-8 leading-10">
             {message.substring(0, 100)}{" "}
             <span className="no-underline text-gray-400 text-3xs cursor-pointer">
-              <Link href="/about_us">Read More ...</Link>
+              <Link href="/about_us">
+                <span>Read More ...</span>
+              </Link>
             </span>
           </p>
         </div>
         <div className="mt-16 flex justify-center gap-8">
           <a href="https://www.instagram.com/flemingsyiem/" target="_blank">
             <Image
-              src="/instagram@2x.png"
+              src="/social/instagram@2x.png"
               alt="Social Media icons Team Instagram"
               width={30}
               height={30}
@@ -50,7 +52,7 @@ const TeamsCard = ({ profile, name, role, message, key }) => {
             target="_blank"
           >
             <Image
-              src="/facebook@2x.png"
+              src="/social/facebook@2x.png"
               alt="Social Media icons Team Instagram"
               width={30}
               height={30}

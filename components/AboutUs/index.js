@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import AboutTeamsMobile from "./AboutTeamsMobile";
 import { useWindowSize } from "hooks/useWindowSize";
+import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -16,13 +17,9 @@ function SampleNextArrow(props) {
       onClick={onClick}
       className="w-[77px] h-[77px] hidden lg:block absolute top-1/2 -left-32 transform -translate-y-1/2 cursor-pointer"
     >
-      <Image
-        unoptimized
-        src="/testimonial-back-arrow.svg"
-        alt="testimonial back arrow"
-        width={100}
-        height={100}
-      />
+      <span className=" w-20 h-20 rounded-full bg-[#FF6B00] flex justify-center items-center shadow-[0px_5px_10px_3px_rgba(0,_0,_0,_0.25)]">
+        <RiArrowDropLeftLine className="text-white text-3xl" />
+      </span>
     </div>
   );
 }
@@ -34,13 +31,9 @@ function SamplePrevArrow(props) {
       onClick={onClick}
       className="w-[77px] h-[77px] hidden lg:block absolute top-1/2 -right-32 transform -translate-y-1/2 cursor-pointer"
     >
-      <Image
-        unoptimized
-        src="/testimonial-next-arrow.svg"
-        alt="testimonial back arrow"
-        width={100}
-        height={100}
-      />
+      <span className="ml-8 w-20 h-20 rounded-full bg-brown flex justify-center items-center shadow-[0px_5px_10px_3px_rgba(0,_0,_0,_0.25)]">
+        <RiArrowDropRightLine className="text-white text-3xl" />
+      </span>
     </div>
   );
 }
@@ -65,7 +58,7 @@ const AboutComponent = () => {
           <span>Our</span>
           <span className="text-brown"> MOTIVES</span>
         </h2>
-        <div className="w-full h-auto text-2xs mt-24 mb-8">
+        <div className="w-full h-auto text-2xs lg:text-xs mt-24 mb-8">
           <p className="mb-8">
             At EaseAuto, our mission is to provide a simple and stress-free way
             for individuals to sell their used cars. We understand that selling

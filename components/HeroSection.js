@@ -83,7 +83,7 @@ const HeroSection = () => {
           unoptimized
           className="cursor-pointer "
           alt="EaseAutoService Logo"
-          src="/header-1@2x.png"
+          src="/header-1@2x.webp"
           width={900}
           height="561px"
           objectFit="contain"

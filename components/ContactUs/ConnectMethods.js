@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { HiMail } from "react-icons/hi";
+import { IoLocation } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa";
 
 const ConnectMethods = () => {
   return (
@@ -8,74 +11,52 @@ const ConnectMethods = () => {
         <span> with Us</span>
       </h5>
       <div className=" flex justify-start flex-wrap gap-6 h-auto text-center text-black font-outfit mt-12">
-        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
-          <div className=" w-16 h-16 overflow-hidden">
-            <Image
-              unoptimized
-              className="bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
-              alt="easeAuto email icon"
-              loading="lazy"
-              src="/vector.svg"
-              width={80}
-              height={80}
-            />
+        <div className="rounded-xl bg-gray-100 flex items-center flex-col p-6 pt-12">
+          <div className=" ">
+            <HiMail className="text-[4rem] text-indigo-200" />
           </div>
-          <h5 className=" text-base font-semibold font-poppins inline-block">
+          <h5 className=" text-base text-gray-600 font-semibold font-outfit inline-block">
             Email
           </h5>
-          <p className="mt-12 text-sm">Our Team is here to help</p>
+          <p className="mt-12 text-sm text-gray-500">
+            Our Team is here to help
+          </p>
           <div className="mt-4">
-            <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
+            <p className=" font-semibold text-3xs font-hind-kochi text-indigo-200 inline-block">
               easeautoservice@gmail.com
             </p>
           </div>
         </div>
-        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
+        <div className="rounded-xl bg-gray-100 flex items-center flex-col p-6 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
-            <Image
-              unoptimized
-              className="   bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
-              alt="easeAuto email icon"
-              loading="lazy"
-              src="/vector1.svg"
-              width={80}
-              height={80}
-            />
+            <IoLocation className="text-[4rem] text-indigo-200" />
           </div>
-          <h5 className=" text-base font-semibold font-poppins inline-block">
+          <h5 className=" text-base font-semibold text-gray-600 font-poppins inline-block">
             Location
           </h5>
-          <p className="mt-12 text-sm">Our Team is here to help</p>
+          <p className="mt-12 text-sm text-gray-500">Come and pay us a Visit</p>
           <div className="flex flex-col gap-2 mt-4">
-            <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
+            <p className=" font-semibold text-3xs font-hind-kochi text-indigo-200 inline-block">
               Gulzar Group Of Institutes
             </p>
-            <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
+            <p className=" font-semibold text-3xs font-hind-kochi text-indigo-200 inline-block">
               Khanna, Punjab 141401
             </p>
           </div>
         </div>
-        <div className="h-[26rem] w-[30rem] rounded-xl bg-gray-100 flex items-center flex-col p-4 pt-12">
+        <div className="rounded-xl bg-gray-100 flex items-center flex-col p-6 pt-12">
           <div className=" w-16 h-16 overflow-hidden">
-            <Image
-              unoptimized
-              className="   bottom-[16.67%] left-[8.33%] max-w-full overflow-hidden max-h-full"
-              alt="easeAuto email icon"
-              loading="lazy"
-              src="/vector2.svg"
-              width={80}
-              height={80}
-            />
+            <FaPhone className="text-[3.8rem] text-indigo-200" />
           </div>
-          <h5 className=" text-base font-semibold font-poppins inline-block">
+          <h5 className=" text-base font-semibold text-gray-600 font-inter inline-block">
             Phone
           </h5>
-          <p className="mt-12 text-sm">Mon-Friday 9AM to 6PM</p>
+          <p className="mt-12 text-sm text-gray-500">Mon-Friday 9AM to 6PM</p>
           <div className="flex flex-col gap-2 mt-4">
-            <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
+            <p className=" font-semibold text-3xs font-hind-kochi text-indigo-200 inline-block">
               +91 7005478702
             </p>
-            <p className=" font-semibold text-2xs font-hind-kochi text-indigo-200 inline-block">
+            <p className=" font-semibold text-3xs font-hind-kochi text-indigo-200 inline-block">
               +91 9123249940
             </p>
           </div>

@@ -25,43 +25,6 @@ const HowItWorks = () => {
               color={item.color}
             />
           ))}
-
-        {/* <div className="w-[25rem] h-[32rem]">
-          <div className="w-[75.89px] h-[75px] relative">
-            <span className="inline-block h-full w-full bg-brown rounded-full"></span>
-            <div className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 trans font-medium inline-block w-[11.13px]">
-              2
-            </div>
-          </div>
-          <div className=" text-base text-black mt-28 pr-4">
-            Select your ownership type. Are you the first owner, second owner,
-            or third owner?
-          </div>
-        </div>
-        <div className="w-[25rem] h-[32rem]">
-          <div className="w-[75.89px] h-[75px] relative">
-            <span className="inline-block h-full w-full bg-red rounded-full"></span>
-            <div className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 font-medium inline-block w-[11.13px]">
-              3
-            </div>
-          </div>
-          <div className=" text-base text-black mt-28 pr-4">
-            Using advanced machine learning algorithms, we will generate an
-            offer for your car.
-          </div>
-        </div>
-        <div className="w-[25rem] h-[32rem]">
-          <div className="w-[75.89px] h-[75px] relative">
-            <span className="inline-block h-full w-full bg-[#1180E6] rounded-full"></span>
-            <div className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 trans font-medium inline-block w-[11.13px]">
-              4
-            </div>
-          </div>
-          <div className=" text-base text-black mt-28 pr-4">
-            Once you accept our offer, you'll be able to choose a convenient
-            date for us to come and pick up your car.
-          </div>
-        </div> */}
       </div>
     </section>
   );

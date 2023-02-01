@@ -29,7 +29,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
           </span>
         </div>
         <div className="mt-16 w-[70%] px-12">
-          <p className="text-sm text-black inline-block testimonialFeedback text-center w-4/5 pb-8">
+          <p className="text-xs  text-black inline-block testimonialFeedback text-center w-4/5 pb-8">
             {message}
           </p>
         </div>
@@ -37,7 +37,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
       <div className=" m-auto flex item-center justify-center gap-12 mt-12 ">
         <Image
           unoptimized
-          src="/instagram@2x.png"
+          src="/social/instagram@2x.png"
           alt="EaseautoService team Instagram profile"
           width={30}
           height={30}
@@ -46,7 +46,7 @@ const AboutTeams = ({ name, profile, message, role }) => {
         />
         <Image
           unoptimized
-          src="/facebook@2x.png"
+          src="/social/facebook@2x.png"
           alt="EaseautoService team facebook profile"
           width={30}
           height={30}
@@ -62,7 +62,8 @@ const AboutTeams = ({ name, profile, message, role }) => {
 
           .testimonialFeedback:after {
             content: url("/closingQuote.png");
-            position: absolute;
+            display: flex;
+            justify-content: flex-end;
           }
         `}
       </style>

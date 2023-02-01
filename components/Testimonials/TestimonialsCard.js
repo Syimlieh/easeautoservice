@@ -26,7 +26,7 @@ const TestimonialsCard = ({ name, profile, message }) => {
           </span>
         </div>
         <div className="mt-4 w-[70%] px-12">
-          <p className="text-sm text-black inline-block testimonialFeedback w-4/5 pb-8">
+          <p className="text-xs text-black inline-block testimonialFeedback w-4/5 pb-8">
             {message}
           </p>
         </div>
@@ -39,7 +39,8 @@ const TestimonialsCard = ({ name, profile, message }) => {
 
           .testimonialFeedback:after {
             content: url("/closingQuote.png");
-            position: absolute;
+            display: flex;
+            justify-content: flex-end;
           }
         `}
       </style>

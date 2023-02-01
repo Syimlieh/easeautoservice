@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import { data } from "./testimonialsData";
 import { useWindowSize } from "hooks/useWindowSize";
 import TestimonialMobile from "./TestimonialMobile";
+import { RiArrowDropLeftLine, RiArrowDropRightLine } from "react-icons/ri";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -16,13 +17,9 @@ function SampleNextArrow(props) {
       onClick={onClick}
       className="h-[52px] w-[52px] lg:w-[77px] lg:h-[77px] hidden xs:block absolute top-12 lg:top-1/2 left-12 lg:-left-32 transform -translate-y-1/2 cursor-pointer"
     >
-      <Image
-        unoptimized
-        src="/testimonial-back-arrow.svg"
-        alt="testimonial back arrow"
-        width={100}
-        height={100}
-      />
+      <span className=" w-20 h-20 rounded-full bg-[#FF6B00] flex justify-center items-center shadow-[0px_5px_10px_3px_rgba(0,_0,_0,_0.25)]">
+        <RiArrowDropLeftLine className="text-white text-3xl" />
+      </span>
     </div>
   );
 }
@@ -34,13 +31,9 @@ function SamplePrevArrow(props) {
       onClick={onClick}
       className="h-[52px] w-[52px]  lg:w-[77px] lg:h-[77px] hidden xs:block absolute top-12 lg:top-1/2 right-4 lg:-right-32 transform -translate-y-1/2 cursor-pointer z-10"
     >
-      <Image
-        unoptimized
-        src="/testimonial-next-arrow.svg"
-        alt="testimonial back arrow"
-        width={100}
-        height={100}
-      />
+      <span className="ml-8 w-20 h-20 rounded-full bg-brown flex justify-center items-center shadow-[0px_5px_10px_3px_rgba(0,_0,_0,_0.25)]">
+        <RiArrowDropRightLine className="text-white text-3xl" />
+      </span>
     </div>
   );
 }
@@ -67,31 +60,29 @@ const Testimonials = () => {
           What our customers says
         </h4>
       </div>
-      <div className="relative w-full text-left text-gray-400 font-inter">
-        <Slider
-          {...settings}
-          className="shadow-[10px_10px_10px_5px_rgba(0,_0,_0,_0.25)] p-12 pb-20 rounded-[10px]"
-        >
-          {data &&
-            data.map((item) =>
-              width < 1024 ? (
-                <TestimonialMobile
-                  key={item.id}
-                  name={item.name}
-                  profile={item.profile}
-                  message={item.message}
-                />
-              ) : (
-                <TestimonialsCard
-                  key={item.id}
-                  name={item.name}
-                  profile={item.profile}
-                  message={item.message}
-                />
-              )
-            )}
-        </Slider>
-      </div>
+      <Slider
+        {...settings}
+        className="shadow-[10px_10px_10px_5px_rgba(0,_0,_0,_0.25)] p-12 pb-20 rounded-[10px] w-full"
+      >
+        {data &&
+          data.map((item) =>
+            width < 1024 ? (
+              <TestimonialMobile
+                key={item.id}
+                name={item.name}
+                profile={item.profile}
+                message={item.message}
+              />
+            ) : (
+              <TestimonialsCard
+                key={item.id}
+                name={item.name}
+                profile={item.profile}
+                message={item.message}
+              />
+            )
+          )}
+      </Slider>
     </section>
   );
 };

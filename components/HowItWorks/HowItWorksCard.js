@@ -6,14 +6,13 @@ const HowItWorksCard = ({ number, message, color }) => {
   };
   return (
     <div className="w-[25rem] h-auto py-8">
-      <div className="w-[75.89px] h-[75px] relative">
+      <div className="h-24 w-24 lg:w-28  lg:h-28 relative">
         <span
-          className="inline-block h-full w-full rounded-full"
+          className="h-full w-full rounded-full flex justify-center items-center"
           style={bgStyle}
-        ></span>
-        <div className="absolute top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 trans font-medium inline-block w-[11.13px]">
+        >
           {number}
-        </div>
+        </span>
       </div>
       <p className=" text-3xs lg:text-xs  text-black mt-16 pr-4">{message}</p>
     </div>

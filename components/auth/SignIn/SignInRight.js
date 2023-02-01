@@ -114,7 +114,7 @@ const SignInRight = () => {
         <button className="cursor-pointer font-poppins [border:1px_solid_#b5b5b5] px-0 py-2 w-[28rem] bg-gray-900 rounded-[9px] flex items-center justify-center gap-4">
           <Image
             unoptimized
-            src="/google1@2x.png"
+            src="/social/google1@2x.png"
             alt="google auth icon"
             width={30}
             height={30}

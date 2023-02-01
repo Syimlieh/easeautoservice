@@ -7,7 +7,7 @@ import Teams from "components/Teams";
 const ContactUs = () => {
   return (
     <Layout>
-      <div className="relative bg-white w-full text-center overflow-hidden text-black font-outfit mt-32">
+      <div className="relative bg-white w-full text-center text-black font-outfit mt-32">
         <HeroSection />
         <HowItWorks />
         <Testimonials />
